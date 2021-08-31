@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+int numero;
+
+int main(){
+	printf("digita um numero que eu vou adivinhar: ");
+	scanf("%d",&numero);
+	printf("o numero que vc digitou foi: %d",numero);
+	
+	return(0);
+}
