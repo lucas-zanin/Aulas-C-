@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+float n,p,soma;
+
+int main(){
+	printf("valor: ");
+	scanf("%f",&n);
+	printf("porcentagem: ");
+	scanf("%f",&p);
+	soma=(p/100)*n;
+	printf("%.0f%% de %.0f eh: %.0f",p,n,soma);
+	
+	return(0);
+}
