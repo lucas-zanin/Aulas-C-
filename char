@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+char nome[1];
+
+int main(){
+	printf("nome: ");
+	gets(nome);
+	printf("O Vasco anunciou na manha desta sexta-feira a contratacao do oitavo reforco para a temporada de 2021.\nTrata-se do meia argentino %s.",nome);
+	return(0);
+}
