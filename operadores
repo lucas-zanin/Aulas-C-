@@ -12,24 +12,28 @@ int main(){
 			printf("valor 2: ");
 			scanf("%d",&n2);
 			printf("%d + %d = %d",n1,n2,soma=n1+n2);
+			break;
 		case 2:
-		printf("valor 1: ");
+			printf("valor 1: ");
 			scanf("%d",&n1);
 			printf("valor 2: ");
 			scanf("%d",&n2);
 			printf("%d - %d = %d",n1,n2,soma=n1-n2);
+			break;	
 		case 3:
 			printf("valor 1: ");
 			scanf("%d",&n1);
 			printf("valor 2: ");
 			scanf("%d",&n2);
 			printf("%d x %d = %d",n1,n2,soma=n1*n2);
+			break;
 		case 4:
 			printf("valor 1: ");
 			scanf("%d",&n1);
 			printf("valor 2: ");
 			scanf("%d",&n2);
-			printf("%d / %d = %d",n1,n2,soma=n1/n2);	
+			printf("%d / %d = %d",n1,n2,soma=n1/n2);
+			break;	
 	}
 	
 	
