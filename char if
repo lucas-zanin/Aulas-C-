@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+char nome[1];
+char sexo[1];
+int idade;
+
+int main(){
+	printf("Nome: ");
+	gets(nome);
+	printf("Sexo: ");
+	scanf("%s",&sexo);
+	printf("Idade: ");
+	scanf("%d",&idade);
+	if(sexo=="Masculino" && idade>=18){
+		printf("ALISTAMENTO");
+	}else{
+		printf("NÃO ESTA APTO");
+	}
+}
