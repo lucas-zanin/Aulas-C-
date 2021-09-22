@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-char nome[1];
-char sexo[1];
+char nome[20];
+char sexo[20];
 int idade;
 
 int main(){
