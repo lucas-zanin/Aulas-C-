@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct alunos{
+	char nome[100];
+	float n1,n2,media,idade;
+};
+struct alunos aluno[2];
+
+int main(){
+	int i;
+	for(i=0;i<2;i++){
+		printf("nome do aluno: ");
+		fflush(stdin);
+		gets(aluno[i].nome);
+		printf("idade: ");
+		scanf("%f",&aluno[i].idade);
+		printf("nota 1: ");
+		scanf("%f",&aluno[i].n1);
+		printf("nota 2: ");
+		scanf("%f",&aluno[i].n2);
+		aluno[i].media=(aluno[i].n1+aluno[i].n2)/2;
+	}
+	for(i=0;i<2;i++){
+		printf("aluno %s de idade %.0f media: %.2f\n",aluno[i].nome,aluno[i].idade,aluno[i].media);
+	}
+	return 0;
+}
