@@ -4,103 +4,125 @@
 #include <stdbool.h>
 
 struct projeto{
-	int codigo;
-	char titulo[100];
-	char descricao[100];
-	char responsavel[100];
-	int status;
+	int codigo,status;
+	char titulo[100];char descricao[100];char responsavel[100];
 };
-
 struct projeto projetos[200];
 int opcao, sequencia=0;
 const int A=1,F=2,C=3;
-
-
 void cadastrar_projeto(){
 	bool cadastro=true;
 	char continuar;
 	do{
 		system("cls");
 		projetos[sequencia].codigo=sequencia+1;
-		
-		printf("\nTítulo do projeto: ");
+		printf("\nDigite o titulo do projeto: ");
 		fflush(stdin);
 		gets(projetos[sequencia].titulo);
-		
-		printf("\nDescrição do projeto: ");
+		printf("\nDigite a descrição do projeto: ");
 		fflush(stdin);
 		gets(projetos[sequencia].descricao);
-		
-		printf("\nResponsavel do projeto: ");
+		printf("\nDigite o responsavel: ");
 		fflush(stdin);
 		gets(projetos[sequencia].responsavel);
-		
-		printf("\nStatus do projeto: ");
+		printf("\n1 para projeto A FAZER\n2 para projeto FAZENDO\n3 para projeto CONCLUIDO\n\nDigite o status:  ");
 		fflush(stdin);
 		scanf("%d",&projetos[sequencia].status);
-		
-		printf("\nCadastro realizado com sucesso, deseja realizar um novo cadastro? S- sim N- não");
+		if(projetos[sequencia].status!=1 && projetos[sequencia].status!=2 && projetos[sequencia].status!=3){
+				printf("nananinanão, numero de status nao compatível\ntente novamente\n");
+				system("pause");
+			}
+		printf("\nCadastro realizado com sucesso, deseja realizar um novo cadastro?\nS- sim N- não ");
 		fflush(stdin);
 		scanf("%c",&continuar);
 		if((continuar=='N')||(continuar=='n')){
 			cadastro=false;
 		}
-		
 		sequencia++;
 	}while(cadastro==true);
 }
-
 void todos_projetos(){
 	system("cls");
 	int i;
+	bool achou;
 	if(projetos[0].codigo>0){
 		for(i=0;i<sequencia;i++){
-			printf("\nCódigo: %d ",projetos[i].codigo);
-			printf("\nTítulo: %s ",projetos[i].titulo);
-			printf("\nDescrição: %s ",projetos[i].descricao);
-			printf("\nResponsavel: %s ",projetos[i].responsavel);
-			printf("\nStatus: %d ",projetos[i].status);
-			printf("\n******************************\n");
+			printf("\nCódigo: %d\nTitulo: %s\nDescrição: %s\nResposável: %s\nStatus: %d\n*****************************\n",projetos[i].codigo,projetos[i].titulo,projetos[i].descricao,projetos[i].responsavel,projetos[i].status);
 		}
 	}else{
 		printf("\nNenhum projeto cadastrado");
 	}
 	system("pause");
 }
-
-
 void por_status(int s){
 	system("cls");
 	int i;
-	bool achou;
+	bool achou;;
 	for(i=0;i<sequencia;i++){
 		if(projetos[i].status==s){
-			printf("\nCódigo: %d ",projetos[i].codigo);
-			printf("\nTítulo: %s ",projetos[i].titulo);
-			printf("\nDescrição: %s ",projetos[i].descricao);
-			printf("\nResponsavel: %s ",projetos[i].responsavel);
-			printf("\nStatus: %d ",projetos[i].status);
-			printf("\n******************************\n");
+			printf("\nCódigo: %d\nTitulo: %s\nDescrição: %s\nResposável: %s\nStatus: %d\n*****************************\n",projetos[i].codigo,projetos[i].titulo,projetos[i].descricao,projetos[i].responsavel,projetos[i].status);
 			achou=true;
 		}else{
 			achou=false;
 		}
 	}
-		if(achou==false){
-			printf("\nProjeto não encontrado");
-		}
-		system("pause");
+	system("pause");
 }
-
 busca_codigo(){
+	int i, busca=0;
+	bool achou;
+	system("cls");
+	printf("\nDigite o código de busca: ");
+	scanf("%d",&busca);
+	for(i=0;i<busca;i++){
+		if(projetos[i].codigo==busca){
+			printf("\nCódigo: %d\nTitulo: %s\nDescrição: %s\nResposável: %s\nStatus: %d\n*****************************\n",projetos[i].codigo,projetos[i].titulo,projetos[i].descricao,projetos[i].responsavel,projetos[i].status);
+			achou=true;
+		}else{
+			achou=false;
+		}
+	}
+	if(achou==false){
+		printf("\nProjeto não encontrado\n");
+	}
+	system("pause");
 }
-
+edita_codigo(){
+	int i, busca=0;
+	bool achou;
+	system("cls");
+	printf("Digite o código do projeto a ser editado: ");
+	scanf("%d",&busca);
+	for(i=0;i<=busca;i++){
+		if(projetos[i].codigo==busca){
+			printf("\nDigite o titulo do projeto: ");
+			fflush(stdin);
+			gets(projetos[i].titulo);
+			printf("\nDigite a descrição do projeto: ");
+			fflush(stdin);
+			gets(projetos[i].descricao);
+			printf("\nDigite o responsavel: ");
+			fflush(stdin);
+			gets(projetos[i].responsavel);
+			printf("\n1 para projeto A FAZER\n2 para projeto FAZENDO\n3 para projeto CONCLUIDO\n\nDigite o status:  ");
+			fflush(stdin);
+			scanf("%d",&projetos[i].status);
+			if(projetos[i].status!=1 && projetos[i].status!=2 && projetos[i].status!=3){
+				printf("nananinanão, numero de status nao compatível\ntente novamente\n");
+				system("pause");
+			}
+			achou=true;
+		}else{
+			achou=false;
+		}
+	}	
+}
 int main(){
 	setlocale(LC_ALL, "Portuguese");
 	do{
 		system("cls");
 		opcao=9;
-		printf("\nDigite 1 para cadastrar projetos\nDigite 2 para imprimir todos os projetos\nDigite 3 para imprimir todos os projetos com status: A FAZER\nDigite 4 para imprimir todos os projetos com o status: EM ANDAMENTO\nDigite 5 para imprimir todos os projetos com status: CONCLUÍDO\nDigite 6 para busca de projeto por código\nDigite 0 para sair da aplicação");
+		printf("Digite 1 para cadastrar projetos\nDigite 2 para imprimir todos os projetos\nDigite 3 para imprimir todos os projetos com status: A FAZER\nDigite 4 para imprimir todos os projetos com status: FAZENDO\nDigite 5 para imprimir todos os projetos com status: CONCLUÍDO\nDigite 6 para busca de projeto por código\nDigite 7 para editar um código\nDigite 0 para sair da aplicação");
 		printf("\nDigite a opção desejada: ");
 		scanf("%d",&opcao);
 		switch(opcao){
@@ -120,14 +142,18 @@ int main(){
 				por_status(C);
 			break;
 			case 6:
+				busca_codigo();
+			break;
+			case 7:
+				edita_codigo();
 			break;
 			case 0:
+				printf("\nsaindo da aplicação");
 			break;
 			default:
 				printf("\nOpção inválida");
 				system("pause");
 		}
 	}while(opcao!=0);
-	
 	return 0;
 }
