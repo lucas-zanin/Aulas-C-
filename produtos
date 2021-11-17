@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <stdbool.h>
+
+struct produto{
+	int codigo,valor,qtde;
+	char nome[50];
+};
+
+struct produto produtos[200];
+	bool cadastro=true;
+	int opcao, sequencia=0;
+
+void cadastrar_produtos(){
+	bool cadastro=true;
+	char continuar;
+	do{
+		system("cls");
+		printf("digite o código do produto: ");
+		scanf("%d",&produtos[sequencia].codigo);
+		printf("digite o valor do produto: ");
+		scanf("%d",&produtos[sequencia].valor);
+		printf("digite a quantidade do produto: ");
+		scanf("%d",&produtos[sequencia].qtde);
+		printf("digite o nome do produto: ");
+		fflush(stdin);
+		gets(produtos[sequencia].nome);	
+		printf("\nCadastro realizado com sucesso, deseja realizar um novo cadastro?\nS- sim N- não ");
+		fflush(stdin);
+		scanf("%c",&continuar);
+		if((continuar=='N')||(continuar=='n')){
+			cadastro=false;
+		}
+		sequencia++;
+	}while(cadastro==true);
+}
+
+void todos_produtos(){
+	system("cls");
+	int i;
+	for(i=0;i<sequencia;i++){
+		printf("\nCódigo: %d\nNome: %s\nQuantidade: %d\nValor: %d\n*****************************\n",produtos[i].codigo,produtos[i].nome,produtos[i].qtde,produtos[i].valor);
+	}
+	system("pause");
+}
+
+edita_produto(){
+	int i, busca=0;
+	bool achou;
+	system("cls");
+	printf("Digite o código do produto a ser editado: ");
+	scanf("%d",&busca);
+	for(i=0;i<busca;i++){
+		if(produtos[i].codigo==busca);
+			system("cls");
+			printf("digite a quantidade do produto: ");
+			scanf("%d",&produtos[i].qtde);
+	}
+}
+
+void por_codigo(int s){
+	system("cls");
+	int i;
+	bool achou;
+	for(i=0;i<sequencia;i++){
+		if(produtos[i].codigo==s){
+			printf("\nCódigo: %d\nNome: %s\nQuantidade: %d\nValor: %d\n*****************************\n",produtos[i].codigo,produtos[i].nome,produtos[i].qtde,produtos[i].valor);
+			achou=true;
+		}else{
+			achou=false;
+		}
+	}
+	system("pause");
+}
+
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	do{
+		system("cls");
+		opcao=9;
+		printf("Digite 1 para cadastrar produtos\nDigite 2 para imprimir todos os produtos\nDigite 3 para imprimir por código\nDigite 4 para editar o produto\n");
+		printf("\nDigite a opção desejada: ");
+		scanf("%d",&opcao);
+		switch(opcao){
+			case 1:
+				cadastrar_produtos();
+			break;
+			case 2:
+				todos_produtos();
+			break;
+			case 3:
+				int s;
+				printf("codigo do produto desejado: ");
+				scanf("%d");
+				por_codigo(s);
+			break;
+			case 4:
+				edita_produto();
+			break;
+			case 0:
+				printf("\nsaindo da aplicação");
+			break;
+		}
+	}while(opcao!=0);
+}
