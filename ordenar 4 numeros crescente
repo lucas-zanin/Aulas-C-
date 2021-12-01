@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+	int i, j, numeros[3], aux;
+	
+	printf("digite quatro numeros: \n");
+	for(i=0;i<4;i++){
+		scanf("%d",&numeros[i]);
+	}
+	
+	for(i=0;i<4;i++){
+		for(j=i+1;j<4;j++){
+			if(numeros[i] > numeros[j]){
+				aux = numeros[i];
+				numeros[i] = numeros[j];
+				numeros[j] = aux;
+			}
+		}
+	}
+	printf("-------------------------------");
+	for(i=0;i<4;i++){
+		printf("\n%d",numeros[i]);
+	}
+	
+	return 0;
+}
